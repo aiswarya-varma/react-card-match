@@ -8,9 +8,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
  * @param {Object} props component props - card image
  */
 const Card = (props) => {
-    const handleFlip = (e) => {
-        props.handleClick(e.currentTarget.getAttribute('data-card'));
-    }
+    const handleFlip = (e) => props.handleClick(e.currentTarget.getAttribute('data-card'));
 
     return (
         <Col md={props.cols}>

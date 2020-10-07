@@ -3,20 +3,9 @@ import { Row } from 'react-bootstrap';
 import Card from './Card.js';
 import { getCardName } from './utils.js';
 
-const removeItem = (cardArr, card) => {
-    const index = cardArr.indexOf(card);
-    cardArr.splice(index, 1);
+const didMatch = (cardArr, card) => getText(cardArr[0]) === getText(card);
 
-    return cardArr;
-}
-
-const didMatch = (cardArr, card) => {
-    return getText(cardArr[0]) === getText(card);
-}
-
-const getText = (str) => {
-    return str.replace(/\d+/g, "");
-}
+const getText = (str) => str.replace(/\d+/g, "");
 
 const addToMatched = (matchedArr, card) => [...matchedArr, getText(card)];
 
@@ -31,7 +20,7 @@ const Cards = (props) => {
     const handleFlipped = (flippedCard) => {
         if (flipped.length < 2) {
             if (flipped.includes(flippedCard)) {
-                setFlipped(removeItem(flipped, flippedCard));
+                setFlipped([]);
             }
             else if (flipped.length === 1 && didMatch(flipped, flippedCard)) {
                 setMatched(addToMatched(matched, flippedCard));
@@ -56,7 +45,7 @@ const Cards = (props) => {
     });
 
     return (
-        <Row>
+        <Row className="justify-content-md-center">
             {
                 contents.map((c, i) => {
                     const name = getCardName(c);
