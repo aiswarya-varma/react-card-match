@@ -21,6 +21,18 @@ h1 {
     color: #e43d3d;
 }
 
+.top-padding {
+  padding-top: 10px;
+}
+
+.show-control {
+  display: inline-block;
+}
+
+.hide-control {
+  display: none;
+}
+
 /* Card flip styles */
 
 .card-size-4 {
@@ -128,17 +140,21 @@ h1 {
  /* Win styles */
 
 .win-div {
-    transition: opacity 1s ease-out;
-    opacity: 0;
-    height: 0;
-    overflow: hidden;
     font-size: 10rem;
     text-align: center;
     text-shadow: 2px 2px #FF0000;
     padding-top: 110px;
     padding-bottom: 110px;
 }
-.win-div.active {
+
+.transition {
+  transition: opacity 1s ease-out;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.transition.active {
     opacity: 1;
     height: 100%;
 }

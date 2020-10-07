@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Container, Row } from 'react-bootstrap';
 import Cards from './Cards.js';
 import { items } from './utils.js';
 
@@ -36,18 +37,16 @@ const getContent = (difficulty) => {
     return [...arr1, getImage(difficulty, arr1)].flat();
 }
 
-const CardContainer = (props) => {
-    const [win, setWin] = useState(false);
-
-    const contents = getContent(props.difficulty);
-
-    const handleWin = (didWin) => setWin(didWin);
+const CardContainer = ({ difficulty, didWin, handleWin, className }) => {
+    const contents = getContent(difficulty);
 
     return (
-        <div>
-            { !win && <Cards contents={contents} handleWin={handleWin} difficulty={props.difficulty} />}
-            <div className={`red win-div win-div-text ${win ? "active" : ""}`}>You Won!!</div>
-        </div>
+        <Row className={`transition ${className}`}>
+            <Container className="main">
+                {!didWin && <Cards contents={contents} handleWin={handleWin} difficulty={difficulty} />}
+                <div className={`red transition win-div win-div-text ${didWin ? "active" : ""}`}>You Won!!</div>
+            </Container>
+        </Row>
     );
 }
 
